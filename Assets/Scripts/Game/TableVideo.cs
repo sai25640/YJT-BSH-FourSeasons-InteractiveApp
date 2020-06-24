@@ -32,6 +32,7 @@ namespace FourSeasons
             //通知投影端开始播放视频
             var msg = new UdpMessage(MessageDefine.TableVideoEnd);
             UdpManager.Instance.SendMessage(msg.ToJson());
+            mVideoCanvas.IsProjectorVideoPlay = true;
         }
 
 	    public void Play()
