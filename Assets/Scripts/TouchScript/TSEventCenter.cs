@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Common;
 using TouchScript.Gestures;
 using UnityEngine;
+using QFramework;
+using EventType = Common.EventType;
 
 public class TSEventCenter : MonoBehaviour
 {
     private MetaGesture mMetaGesture;
-    void Awake()
+
+    void  Awake()
     {
         mMetaGesture = GetComponent<MetaGesture>();
     }
@@ -31,6 +35,7 @@ public class TSEventCenter : MonoBehaviour
         var pointer = e.Pointer;
         //Debug.Log(string.Format("PointerID:{0} PressedPoint{1}: ", pointer.Id, pointer.Position));
         CameraUtils.Instance.IsTouchUIBtn(pointer.Position); 
+        EventCenter.Broadcast(EventType.PointerPressed,pointer.Position);
     }
 
     private void OnPointerUpdated(object sender, MetaGestureEventArgs e)
@@ -42,4 +47,5 @@ public class TSEventCenter : MonoBehaviour
     {
 
     }
+
 }
