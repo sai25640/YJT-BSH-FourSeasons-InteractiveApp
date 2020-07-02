@@ -55,17 +55,17 @@ namespace FourSeasons
 
             Debug.Log("开始倒计时");
             //在指定时间内没有操作投影程序停止播放视频
-            mStopTimeStream = Observable.Timer(TimeSpan.FromSeconds(mStopTime)).Subscribe(_ =>
-            {
-                Debug.Log("倒计时结束");
-                var msg = new UdpMessage(MessageDefine.StopPlayProjectVideo);
-                UdpManager.Instance.SendMessage(msg.ToJson());
-                IsProjectorVideoPlay = false;
-                mStopTimeStream.Dispose();
-                mStopTimeStream = null;
+            //mStopTimeStream = Observable.Timer(TimeSpan.FromSeconds(mStopTime)).Subscribe(_ =>
+            //{
+            //    Debug.Log("倒计时结束");
+            //    var msg = new UdpMessage(MessageDefine.StopPlayProjectVideo);
+            //    UdpManager.Instance.SendMessage(msg.ToJson());
+            //    IsProjectorVideoPlay = false;
+            //    mStopTimeStream.Dispose();
+            //    mStopTimeStream = null;
 
-                StopPlayFourSeasons();
-            });
+            //    StopPlayFourSeasons();
+            //});
         }
 
 	    void StopPlayFourSeasons()
