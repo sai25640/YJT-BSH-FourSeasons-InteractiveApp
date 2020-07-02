@@ -23,7 +23,8 @@ namespace FourSeasons
 		{
             // Code Here
 		    mVideoPlayer.loopPointReached += OnLoopPointReached;
-            mVideoPlayer.frame = 1;
+
+		    Reset();
 		}
 
         private void OnLoopPointReached(VideoPlayer source)
@@ -37,8 +38,17 @@ namespace FourSeasons
 
 	    public void Play()
 	    {
+	        mVideoPlayer.SetDirectAudioMute(0, false);
             mVideoPlayer.Play();
 	    }
+
+	    public void Reset()
+	    {
+	        mVideoPlayer.Play();
+            mVideoPlayer.SetDirectAudioMute(0,true);
+            mVideoPlayer.frame = 1;
+            this.Delay(0.3f, (() => mVideoPlayer.Pause()));
+        }
         
     }
 }
