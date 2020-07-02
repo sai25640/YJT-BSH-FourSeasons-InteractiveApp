@@ -1,4 +1,4 @@
-// Generate Id:5705ebcb-0b2e-48aa-be92-942613bd1333
+// Generate Id:b16ded95-9049-4936-8a75-d05f977430f5
 using UnityEngine;
 
 namespace FourSeasons
@@ -7,6 +7,7 @@ namespace FourSeasons
 	{
 		public UnityEngine.Camera Camera;
 		public FourSeasons.TableVideo TableVideo;
+		public UnityEngine.Animator FourSeasons;
 
 	}
 }

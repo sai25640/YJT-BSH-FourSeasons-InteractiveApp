@@ -11,13 +11,15 @@ namespace FourSeasons
 	public partial class VideoCanvas : ViewController
 	{
 	    public bool IsProjectorVideoPlay { get; set; }
-	    private int mStopTime = 20; //投影程序播放四季视频开始倒计时
+	    private int mStopTime = 30; //投影程序播放四季视频开始倒计时
 	    private IDisposable mStopTimeStream;
 
         void Start()
 		{
             // Code Here
 		    IsProjectorVideoPlay = false;
+		    StopPlayFourSeasons();
+
             EventCenter.AddListener<Vector2>(EventType.PointerPressed, OnPointerPressed);
 		    EventCenter.AddListener(EventType.WholeVideoEnd, OnWholeVideoEnd);
         }
@@ -48,6 +50,9 @@ namespace FourSeasons
 
         private void OnWholeVideoEnd()
         {
+            //同步播放四季动画
+            PlayFourSeasons();
+
             Debug.Log("开始倒计时");
             //在指定时间内没有操作投影程序停止播放视频
             mStopTimeStream = Observable.Timer(TimeSpan.FromSeconds(mStopTime)).Subscribe(_ =>
@@ -58,7 +63,22 @@ namespace FourSeasons
                 IsProjectorVideoPlay = false;
                 mStopTimeStream.Dispose();
                 mStopTimeStream = null;
+
+                StopPlayFourSeasons();
             });
+        }
+
+	    void StopPlayFourSeasons()
+	    {
+	        FourSeasons.Hide();
+	        FourSeasons.enabled = false;
+        }
+
+
+        void PlayFourSeasons()
+	    {
+	        FourSeasons.Show();
+	        FourSeasons.enabled = true;
         }
 
     }
