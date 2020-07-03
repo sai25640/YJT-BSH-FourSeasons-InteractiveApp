@@ -37,7 +37,7 @@ namespace FourSeasons
             //销毁上一次计时，使重新开始
             if (mStopTimeStream.IsNotNull())
             {
-                Debug.Log("销毁上一次计时，使重新开始");
+                //Debug.Log("销毁上一次计时，使重新开始");
                 mStopTimeStream.Dispose();
                 RefreshTimer();
             }
@@ -63,7 +63,7 @@ namespace FourSeasons
 	            mStopTimeStream.Dispose();
             }
 
-            Debug.Log("开始倒计时");
+            //Debug.Log("开始倒计时");
             //在指定时间内没有操作投影程序停止播放视频
             mStopTimeStream = Observable.Timer(TimeSpan.FromSeconds(mStopTime)).Subscribe(_ =>
             {
