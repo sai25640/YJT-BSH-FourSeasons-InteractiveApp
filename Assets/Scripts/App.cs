@@ -57,6 +57,8 @@ namespace FourSeasons
 
             mVideoCanvas = ResLoader.Allocate().LoadSync<GameObject>("VideoCanvas").Instantiate()
                                          .GetComponent<VideoCanvas>();
+
+            CameraUtils.Instance.SetCustomGraphicRaycaster(mVideoCanvas.GetComponent<GraphicRaycaster>());
         }
 
         void InitKinect()

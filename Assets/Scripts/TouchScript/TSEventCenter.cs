@@ -33,9 +33,12 @@ public class TSEventCenter : MonoBehaviour
     private void OnPointerPressed(object sender, MetaGestureEventArgs e)
     {
         var pointer = e.Pointer;
+      
+        //映射的画布大小不一致，所以要做下处理
+        var offsetPos = new Vector2(pointer.Position.x * (2800f / 3840f), pointer.Position.y);
+        CameraUtils.Instance.IsTouchUIBtn(offsetPos);
         //Debug.Log(string.Format("PointerID:{0} PressedPoint{1}: ", pointer.Id, pointer.Position));
-        CameraUtils.Instance.IsTouchUIBtn(pointer.Position); 
-        EventCenter.Broadcast(EventType.PointerPressed,pointer.Position);
+        EventCenter.Broadcast(EventType.PointerPressed, offsetPos);
     }
 
     private void OnPointerUpdated(object sender, MetaGestureEventArgs e)

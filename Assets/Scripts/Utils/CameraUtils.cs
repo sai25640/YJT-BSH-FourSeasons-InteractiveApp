@@ -21,6 +21,11 @@ public class CameraUtils : MonoSingleton<CameraUtils>
         graphicRaycaster = UIManager.Instance.GetComponent<GraphicRaycaster>();
     }
 
+    public void SetCustomGraphicRaycaster(GraphicRaycaster graphic)
+    {
+        graphicRaycaster = graphic;
+    }
+
     #region 射线检测
     /// <summary>
     /// 物理射线检测
@@ -72,7 +77,7 @@ public class CameraUtils : MonoSingleton<CameraUtils>
             var btn = res[i].gameObject.GetComponent<Button>();
             if (btn != null)
             {
-                //Debug.Log("Touch UIBtn: "+ res[i].gameObject.name);
+                Debug.Log("Touch UIBtn: "+ res[i].gameObject.name);
                 btn.onClick.Invoke();
                 return true;
             }

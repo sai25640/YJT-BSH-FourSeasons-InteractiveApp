@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using QFramework;
+
 namespace FourSeasons
 {
     using System;
@@ -34,6 +36,8 @@ namespace FourSeasons
         {
             mData = uiData as UIMainPanelData ?? new UIMainPanelData();
             // please add init code here
+            //UIMgr.Camera.clearFlags = CameraClearFlags.SolidColor;
+            //UIMgr.Camera.backgroundColor = Color.black;
         }
         
         protected override void OnOpen(QFramework.IUIData uiData)

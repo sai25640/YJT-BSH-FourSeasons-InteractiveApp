@@ -5,6 +5,14 @@ namespace Common
     {
         PointerPressed,
         WholeVideoEnd,
+        SpringBegin,
+        SpringEnd,
+        SummerBegin,
+        SummerEnd,
+        FallBegin,
+        FallEnd,
+        WinterBegin,
+        WinterEnd,
     }
 }
 
