@@ -35,6 +35,7 @@ namespace FourSeasons
             EventCenter.RemoveListener(EventType.WinterEnd, OnWinterEnd);
         }
 
+        #region 春
         private void OnSpringBegin()
         {
             for (int i = 0; i < 2; i++)
@@ -58,6 +59,10 @@ namespace FourSeasons
             transform.DestroyAllChild();
         }
 
+
+        #endregion
+
+        #region 夏
         private void OnSummerBegin()
         {
             for (int i = 0; i < 2; i++)
@@ -81,25 +86,55 @@ namespace FourSeasons
             transform.DestroyAllChild();
         }
 
+
+        #endregion
+
+        #region 秋
         private void OnFallBegin()
         {
+            for (int i = 0; i < 2; i++)
+            {
+                BuildFallEffect("FallEffect");
+            }          
+        }
 
+        private void BuildFallEffect(string name)
+        {
+            var effect = ResLoader.Allocate().LoadSync<GameObject>(name).Instantiate()
+                .GetComponent<FallEffect>();
+            effect.Init(transform, name);
         }
 
         private void OnFallEnd()
         {
-
+            transform.DestroyAllChild();
         }
 
+
+        #endregion
+
+        #region 冬
         private void OnWinterBegin()
         {
+            BuildWinterEffect("WinterEffect");
+            BuildWinterEffect("WinterEffect2");
+        }
 
+        private void BuildWinterEffect(string name)
+        {
+            var effect = ResLoader.Allocate().LoadSync<GameObject>(name).Instantiate()
+                .GetComponent<WinterEffect>();
+            effect.Init(transform, name);
         }
 
         private void OnWinterEnd()
         {
-
+            transform.DestroyAllChild();
         }
+
+
+
+        #endregion
 
 
     }
