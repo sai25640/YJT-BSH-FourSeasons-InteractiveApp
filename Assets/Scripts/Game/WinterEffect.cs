@@ -69,10 +69,13 @@ namespace FourSeasons
         {
             Debug.Log("OnBtnClick");
 
-            mButton.interactable = false;
-            mRawImage1.enabled = false;
-            mVideoPlayer1.Stop();
-
+            mButton.interactable = false;        
+            this.Delay(0.3f, () =>
+            {
+                mRawImage1.enabled = false;
+                mVideoPlayer1.Stop();
+            });
+           
             PlayEffect2();
 
             //通知投影端播放动画

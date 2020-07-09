@@ -92,10 +92,14 @@ namespace FourSeasons
         #region 秋
         private void OnFallBegin()
         {
-            for (int i = 0; i < 2; i++)
-            {
-                BuildFallEffect("FallEffect");
-            }          
+            //for (int i = 0; i < 2; i++)
+            //{
+              
+            //}
+            BuildFallEffect("FallEffect");
+            BuildFallEffect("FallEffect2");
+            BuildFallEffect("FallEffect3");
+            BuildFallEffect("FallEffect4");
         }
 
         private void BuildFallEffect(string name)

@@ -63,8 +63,11 @@ namespace FourSeasons
             Debug.Log("OnBtnClick");
 
             mButton.interactable = false;
-            mRawImage1.enabled = false;
-            mVideoPlayer1.Stop();
+            this.Delay(0.5f, () =>
+            {
+                mRawImage1.enabled = false;
+                mVideoPlayer1.Stop();
+            });
 
             PlayEffect2();
 

@@ -23,17 +23,13 @@ namespace FourSeasons
 		{
             // Code Here
 		    mVideoPlayer.loopPointReached += OnLoopPointReached;
-
+		    Debug.Log(mVideoPlayer.frameCount);
 		    Reset();
 		}
 
         private void OnLoopPointReached(VideoPlayer source)
         {
-            Debug.Log(string.Format("Video:{0} PlayEnd", source.name));
-            //通知投影端开始播放视频
-            var msg = new UdpMessage(MessageDefine.TableVideoEnd);
-            UdpManager.Instance.SendMessage(msg.ToJson());
-            mVideoCanvas.IsProjectorVideoPlay = true;
+            Debug.Log(string.Format("Video:{0} PlayEnd", source.name));      
         }
 
 	    public void Play()
@@ -49,6 +45,17 @@ namespace FourSeasons
             mVideoPlayer.frame = 1;
             this.Delay(0.3f, (() => mVideoPlayer.Pause()));
         }
+
+	    void Update()
+	    {
+	        if (mVideoPlayer.frame >= 300 && mVideoPlayer.isPlaying && !mVideoCanvas.IsProjectorVideoPlay)
+	        {
+                //通知投影端开始播放视频
+                var msg = new UdpMessage(MessageDefine.TableVideoEnd);
+                UdpManager.Instance.SendMessage(msg.ToJson());
+                mVideoCanvas.IsProjectorVideoPlay = true;
+            }
+	    }
         
     }
 }

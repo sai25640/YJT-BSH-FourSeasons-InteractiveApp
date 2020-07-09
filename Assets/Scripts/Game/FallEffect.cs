@@ -10,14 +10,16 @@ namespace FourSeasons
     public class FallEffect : MonoBehaviour
     {
         private Button mButton;
+        private Image mImage;
         private RawImage mRawImage;
         private VideoPlayer mVideoPlayer;
 
         void Awake()
         {
             mButton = GetComponent<Button>();
-            mRawImage = transform.GetChild(0).GetComponent<RawImage>();
-            mVideoPlayer = transform.GetChild(0).GetComponent<VideoPlayer>();
+            mImage = transform.GetChild(0).GetComponent<Image>();
+            mRawImage = transform.GetChild(1).GetComponent<RawImage>();
+            mVideoPlayer = transform.GetChild(1).GetComponent<VideoPlayer>();
         }
 
         void Start()
@@ -26,8 +28,9 @@ namespace FourSeasons
             mVideoPlayer.targetTexture = RenderTexture.GetTemporary(1500, 3000, 99);
             mRawImage.texture = mVideoPlayer.targetTexture;
             mVideoPlayer.loopPointReached += OnLoopPointReached;
+            mRawImage.enabled = false;
 
-            //Init(transform.parent, "FallEffect");
+            Init(transform.parent, "FallEffect");
         }
 
         void OnDestroy()
@@ -42,21 +45,16 @@ namespace FourSeasons
         {
             gameObject.name = name;
             transform.parent = parent;
-            transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-300, 300), 0);
+            transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-250, 250), 0);
             transform.localEulerAngles = Vector3.zero;
             transform.localScale = new Vector3(1, 1, -1);
-            //transform.GetChild(0).localScale = Vector3.one * 0.5f;
-
-            mVideoPlayer.Play();
-            mVideoPlayer.frame = 1;
-            //mVideoPlayer.isLooping = true;
-            this.Delay(1f, (() => mVideoPlayer.Pause()));
         }
 
         private void OnBtnClick()
         {
             Debug.Log("OnBtnClick");
 
+            this.Delay(0.5f,()=>mImage.enabled = false);
             mButton.interactable = false;
 
             PlayEffect();

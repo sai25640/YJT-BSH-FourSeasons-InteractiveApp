@@ -41,8 +41,6 @@ namespace FourSeasons
 
         public void Init(Transform parent,string name)
         {
-            //this.Awake();
-            //this.Start();
             gameObject.name = name;
             transform.parent = parent;
             transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-350, 350), 0);
@@ -55,9 +53,9 @@ namespace FourSeasons
         {
             Debug.Log("OnBtnClick");
 
-            mImage.enabled = false;
             mButton.interactable = false;
-
+            this.Delay(0.5f, () => mImage.enabled = false);
+            
             PlayEffect();
 
             //通知投影端播放动画
