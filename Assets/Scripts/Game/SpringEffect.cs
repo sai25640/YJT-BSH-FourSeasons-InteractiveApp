@@ -39,11 +39,11 @@ namespace FourSeasons
             RenderTexture.ReleaseTemporary(mVideoPlayer.targetTexture);
         }
 
-        public void Init(Transform parent)
+        public void Init(Transform parent,string name)
         {
             //this.Awake();
             //this.Start();
-
+            gameObject.name = name;
             transform.parent = parent;
             transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-350, 350), 0);
             transform.localEulerAngles = Vector3.zero;
@@ -59,6 +59,10 @@ namespace FourSeasons
             mButton.interactable = false;
 
             PlayEffect();
+
+            //通知投影端播放动画
+            var msg = new UdpMessage(MessageDefine.PlaySpringEffect, name);
+            UdpManager.Instance.SendMessage(msg.ToJson());
         }
 
 
@@ -74,9 +78,9 @@ namespace FourSeasons
 
         private void OnLoopPointReached(VideoPlayer source)
         {
-            //通知投影端播放动画
-            var msg = new UdpMessage(MessageDefine.PlaySpringEffect);
-            UdpManager.Instance.SendMessage(msg.ToJson());
+            ////通知投影端播放动画
+            //var msg = new UdpMessage(MessageDefine.PlaySpringEffect, name);
+            //UdpManager.Instance.SendMessage(msg.ToJson());
 
             Destroy(this.gameObject);
         }

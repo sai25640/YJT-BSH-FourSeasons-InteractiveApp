@@ -37,12 +37,20 @@ namespace FourSeasons
 
         private void OnSpringBegin()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 2; i++)
             {
-                var effect = ResLoader.Allocate().LoadSync<GameObject>("SpringEffect").Instantiate()
-                                    .GetComponent<SpringEffect>();
-                effect.Init(transform);
+                BuildSpringEffect("SpringEffect");
+                BuildSpringEffect("SpringEffect2");
+                BuildSpringEffect("SpringEffect3");
+                BuildSpringEffect("SpringEffect4");
             }
+        }
+
+        private void BuildSpringEffect(string name)
+        {
+            var effect = ResLoader.Allocate().LoadSync<GameObject>(name).Instantiate()
+                .GetComponent<SpringEffect>();
+            effect.Init(transform, name);
         }
 
         private void OnSpringEnd()
@@ -52,12 +60,20 @@ namespace FourSeasons
 
         private void OnSummerBegin()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 2; i++)
             {
-                var effect = ResLoader.Allocate().LoadSync<GameObject>("SummerEffect").Instantiate()
-                    .GetComponent<SummerEffect>();
-                effect.Init(transform);
+                BuildSummerEffect("SummerEffect");
+                BuildSummerEffect("SummerEffect2");
+                BuildSummerEffect("SummerEffect3");
+                BuildSummerEffect("SummerEffect4");
             }
+        }
+
+        private void BuildSummerEffect(string name)
+        {
+            var effect = ResLoader.Allocate().LoadSync<GameObject>(name).Instantiate()
+                .GetComponent<SummerEffect>();
+            effect.Init(transform, name);
         }
 
         private void OnSummerEnd()

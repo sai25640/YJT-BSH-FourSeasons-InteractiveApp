@@ -45,21 +45,32 @@ namespace FourSeasons
             RenderTexture.ReleaseTemporary(mVideoPlayer2.targetTexture);
         }
 
-        public void Init(Transform parent)
-        {    
+        public void Init(Transform parent,string name)
+        {
+            gameObject.name = name;
             transform.parent = parent;
-            transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-350, 350), 0);
-            transform.localEulerAngles = Vector3.zero;
+            transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-300, 300), 0);
+            transform.localEulerAngles = new Vector3(0,0,Random.Range(-15,15));
             transform.localScale = new Vector3(1, 1, -1);
+            transform.GetChild(0).localScale = Vector3.one * 0.5f;
 
-            this.Delay(Random.Range(0,2f),PlayEffect1);    
+
+            this.Delay(Random.Range(0,1.5f),PlayEffect1);    
         }
 
         private void OnBtnClick()
         {
             Debug.Log("OnBtnClick");
 
+            mButton.interactable = false;
+            mRawImage1.enabled = false;
+            mVideoPlayer1.Stop();
+
             PlayEffect2();
+
+            //通知投影端播放动画
+            var msg = new UdpMessage(MessageDefine.PlaySummerEffect, name);
+            UdpManager.Instance.SendMessage(msg.ToJson());
         }
 
         void PlayEffect1()
@@ -76,9 +87,6 @@ namespace FourSeasons
         {
             if (mVideoPlayer2.targetTexture != null && mRawImage2.texture != null)
             {
-                mRawImage1.enabled = false;
-                mVideoPlayer1.Stop();
-
                 mRawImage2.enabled = true;
                 mVideoPlayer2.isLooping = false;
                 mVideoPlayer2.Play();
@@ -86,9 +94,9 @@ namespace FourSeasons
         }
         private void OnLoopPointReached(VideoPlayer source)
         {
-            //通知投影端播放动画
-            var msg = new UdpMessage(MessageDefine.PlaySummerEffect);
-            UdpManager.Instance.SendMessage(msg.ToJson());
+            ////通知投影端播放动画
+            //var msg = new UdpMessage(MessageDefine.PlaySummerEffect,name);
+            //UdpManager.Instance.SendMessage(msg.ToJson());
 
             Destroy(this.gameObject);
         }
