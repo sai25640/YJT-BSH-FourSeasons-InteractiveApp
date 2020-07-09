@@ -23,7 +23,7 @@ namespace FourSeasons
 		{
             // Code Here
 		    mVideoPlayer.loopPointReached += OnLoopPointReached;
-		    Debug.Log(mVideoPlayer.frameCount);
+		    //Debug.Log(mVideoPlayer.frameCount);
 		    Reset();
 		}
 
@@ -48,7 +48,7 @@ namespace FourSeasons
 
 	    void Update()
 	    {
-	        if (mVideoPlayer.frame >= 300 && mVideoPlayer.isPlaying && !mVideoCanvas.IsProjectorVideoPlay)
+	        if (mVideoPlayer.frame >= 280 && mVideoPlayer.isPlaying && !mVideoCanvas.IsProjectorVideoPlay)
 	        {
                 //通知投影端开始播放视频
                 var msg = new UdpMessage(MessageDefine.TableVideoEnd);

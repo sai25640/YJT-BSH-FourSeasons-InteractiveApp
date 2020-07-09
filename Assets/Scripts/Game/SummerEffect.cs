@@ -35,6 +35,8 @@ namespace FourSeasons
             mRawImage2.texture = mVideoPlayer2.targetTexture;
             mVideoPlayer2.loopPointReached += OnLoopPointReached;
             mRawImage2.enabled = false;
+
+            //Init(transform.parent, "SummerEffect");
         }
 
         void OnDestroy()
@@ -49,11 +51,9 @@ namespace FourSeasons
         {
             gameObject.name = name;
             transform.parent = parent;
-            transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-300, 300), 0);
-            transform.localEulerAngles = new Vector3(0,0,Random.Range(-15,15));
+            transform.localPosition = new Vector3(Random.Range(-1300, 1300), Random.Range(-300, 50), 0);
+            transform.localEulerAngles = new Vector3(0,0,Random.Range(-25,25));
             transform.localScale = new Vector3(1, 1, -1);
-            transform.GetChild(0).localScale = Vector3.one * 0.5f;
-
 
             this.Delay(Random.Range(0,1.5f),PlayEffect1);    
         }

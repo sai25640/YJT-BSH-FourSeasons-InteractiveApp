@@ -30,7 +30,7 @@ namespace FourSeasons
             mVideoPlayer.loopPointReached += OnLoopPointReached;
             mRawImage.enabled = false;
 
-            Init(transform.parent, "FallEffect");
+            //Init(transform.parent, "FallEffect");
         }
 
         void OnDestroy()
