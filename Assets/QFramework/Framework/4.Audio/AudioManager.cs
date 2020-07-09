@@ -476,7 +476,7 @@ namespace QFramework
         public static void PlaySound(string soundName, bool loop = false, Action<AudioUnit> callBack = null,
             int customEventId = -1)
         {
-            if (!IsSoundOn) return;
+            //if (!IsSoundOn) return;
 
             if (soundName.IsNullOrEmpty())
             {

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using Random = UnityEngine.Random;
-
+using QFramework;
 namespace FourSeasons
 {
     public class SpringEffect : MonoBehaviour
@@ -63,6 +63,8 @@ namespace FourSeasons
             //通知投影端播放动画
             var msg = new UdpMessage(MessageDefine.PlaySpringEffect, name);
             UdpManager.Instance.SendMessage(msg.ToJson());
+
+            AudioManager.PlaySound("花开");
         }
 
 

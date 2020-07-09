@@ -64,6 +64,8 @@ namespace FourSeasons
             //通知投影端播放动画
             var msg = new UdpMessage(MessageDefine.PlayFallEffect, name);
             UdpManager.Instance.SendMessage(msg.ToJson());
+
+            AudioManager.PlaySound("叶子");
         }
 
         void PlayEffect()
