@@ -310,6 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1456138062164693195}
   - component: {fileID: 4049582463872776811}
+  - component: {fileID: 638468085558373598}
   m_Layer: 9
   m_Name: EffectBuilder
   m_TagString: Untagged
@@ -348,6 +349,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7223bc1a7427384f8cfa3ec8c124a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &638468085558373598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7296914939075854815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4211833ca4e7a4984b2d973425a62933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MarkType: 0
+  CustomComponentName: EffectBuilder
+  ComponentGeneratePath: 
+  CustomComment: 
+  mComponentName: UnityEngine.RectTransform
 --- !u!1 &7558047250973221251
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +487,8 @@ MonoBehaviour:
   PrefabFolder: Assets/Art/Prefab
   Camera: {fileID: 3733955312730192444}
   TableVideo: {fileID: 5782743931283658836}
-  FourSeasons: {fileID: 564487493}
+  FourSeasonAnim: {fileID: 564487493}
+  EffectBuilder: {fileID: 1456138062164693195}
 --- !u!1 &8597275121017084451
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,8 @@ namespace FourSeasons
 	{
 	    private VideoPlayer mVideoPlayer; 
 	    private VideoCanvas mVideoCanvas;
-        public bool IsPlaying
-        {
-            get => mVideoPlayer.isPlaying;
-        }
+        public bool IsPlaying { get; set; }
+
         void Awake()
 	    {
 	        mVideoPlayer = GetComponent<VideoPlayer>();
@@ -36,6 +34,7 @@ namespace FourSeasons
 	    {
 	        mVideoPlayer.SetDirectAudioMute(0, false);
             mVideoPlayer.Play();
+	        IsPlaying = true;
 	    }
 
 	    public void Reset()
@@ -44,17 +43,18 @@ namespace FourSeasons
             mVideoPlayer.SetDirectAudioMute(0,true);
             mVideoPlayer.frame = 1;
             this.Delay(0.3f, (() => mVideoPlayer.Pause()));
+	        IsPlaying = false;
         }
 
 	    void Update()
 	    {
-	        if (mVideoPlayer.frame >= 280 && mVideoPlayer.isPlaying && !mVideoCanvas.IsProjectorVideoPlay)
+	        if (mVideoPlayer.frame >= 280 && IsPlaying && !mVideoCanvas.IsProjectorVideoPlay )
 	        {
                 //通知投影端开始播放视频
                 var msg = new UdpMessage(MessageDefine.TableVideoEnd);
                 UdpManager.Instance.SendMessage(msg.ToJson());
                 mVideoCanvas.IsProjectorVideoPlay = true;
-            }
+	        }
 	    }
         
     }

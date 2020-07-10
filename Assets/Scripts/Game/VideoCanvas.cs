@@ -81,16 +81,16 @@ namespace FourSeasons
 
 	    void StopPlayFourSeasons()
 	    {
-	        FourSeasons.Hide();
-	        FourSeasons.enabled = false;
-        }
-
-
+            FourSeasonAnim.enabled = false;
+	        FourSeasonAnim.Hide();
+	        EffectBuilder.DestroyAllChild();
+	    }
+	   
         void PlayFourSeasons()
 	    {
-	        FourSeasons.Show();
-	        FourSeasons.enabled = true;
-            FourSeasons.SetTrigger("FourSeasons");
+	        FourSeasonAnim.Show();
+	        FourSeasonAnim.enabled = true;
+	        FourSeasonAnim.SetTrigger("FourSeasons");
         }
 
     }
