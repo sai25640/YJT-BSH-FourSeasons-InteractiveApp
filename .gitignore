@@ -6,6 +6,7 @@
 /Temp/
 /bin/
 /AssetBundles/
+/Assets/StreamingAssets/AssetBundles/
 *.csproj #
 Assembly-CSharp-Editor.csproj
 Assembly-CSharp.csproj

@@ -1,16 +1,73 @@
 ManifestFileVersion: 0
-CRC: 3016241253
+CRC: 1813994336
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: uimainpanel_prefab
       Dependencies: {}
     Info_1:
-      Name: environment_prefab
+      Name: kinectcontroller_prefab
       Dependencies: {}
     Info_2:
-      Name: canvas_prefab
+      Name: environment_prefab
       Dependencies: {}
     Info_3:
-      Name: kinectcontroller_prefab
+      Name: canvas_prefab
+      Dependencies: {}
+    Info_4:
+      Name: springeffect_prefab
+      Dependencies: {}
+    Info_5:
+      Name: videocanvas_prefab
+      Dependencies: {}
+    Info_6:
+      Name: summereffect_prefab
+      Dependencies: {}
+    Info_7:
+      Name: springeffect2_prefab
+      Dependencies: {}
+    Info_8:
+      Name: springeffect3_prefab
+      Dependencies: {}
+    Info_9:
+      Name: springeffect4_prefab
+      Dependencies: {}
+    Info_10:
+      Name: summereffect2_prefab
+      Dependencies: {}
+    Info_11:
+      Name: summereffect3_prefab
+      Dependencies: {}
+    Info_12:
+      Name: summereffect4_prefab
+      Dependencies: {}
+    Info_13:
+      Name: falleffect_prefab
+      Dependencies: {}
+    Info_14:
+      Name: wintereffect_prefab
+      Dependencies: {}
+    Info_15:
+      Name: wintereffect2_prefab
+      Dependencies: {}
+    Info_16:
+      Name: "\u53F6\u5B50_mp3"
+      Dependencies: {}
+    Info_17:
+      Name: "\u82B1\u5F00_mp3"
+      Dependencies: {}
+    Info_18:
+      Name: "\u8774\u8776_mp3"
+      Dependencies: {}
+    Info_19:
+      Name: "\u98DE\u9E1F_mp3"
+      Dependencies: {}
+    Info_20:
+      Name: falleffect2_prefab
+      Dependencies: {}
+    Info_21:
+      Name: falleffect3_prefab
+      Dependencies: {}
+    Info_22:
+      Name: falleffect4_prefab
       Dependencies: {}
